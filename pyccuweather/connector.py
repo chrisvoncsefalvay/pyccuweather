@@ -31,15 +31,20 @@ class Connection(object):
 
         # TODO: implement retries
 
-        try:
-            self.API_KEY = os.environ["ACCUWEATHER_APIKEY"]
-        except KeyError:
+        if API_KEY is None:
             try:
-                assert isinstance(API_KEY, str)
-                assert len(API_KEY) is 32
-                self.API_KEY = API_KEY
-            except AssertionError:
-                raise errors.MalformattedAPIKeyError()
+                self.API_KEY = os.environ["ACCUWEATHER_APIKEY"]
+            except KeyError:
+                raise errors.NoAPIKeyProvided()
+
+        else:
+            self.API_KEY = API_KEY
+
+        try:
+            assert isinstance(self.API_KEY, str)
+            assert len(self.API_KEY) is 32
+        except AssertionError:
+            raise errors.MalformattedAPIKeyError()
 
         self.API_ROOT = "http://apidev.accuweather.com" if dev is True else "http://api.accuweather.com"
         self.API_VERSION = "v1"

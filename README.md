@@ -33,7 +33,7 @@ an explicit API key.
 When creating a `Connection` object, you can provide an API key:
 
     from pyccuweather.connector import Connection
-    conn = Connection(API_KEY="<your API key>"
+    conn = Connection(API_KEY="<your API key>")
     
 This will be used preferentially to the environment key.
 

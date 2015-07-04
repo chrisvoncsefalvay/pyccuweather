@@ -10,3 +10,5 @@ class TestFroot(TestCase):
     def test_froot(self):
         with self.assertRaises(errors.NotImplementedOrUnknownMethod):
             froot("120dforecast")
+
+            

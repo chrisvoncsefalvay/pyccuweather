@@ -3,8 +3,12 @@ python:
 - '3.3'
 - '3.4'
 - nightly
-install: pip install -r requirements.txt
-script: nosetests
+install:
+- pip install -r requirements.txt
+- pip install coveralls
+script: nosetests --cover-package=pyccuweather
 env:
   global:
     secure: X0pL1UyYVBJ1AfQ1hdRvDQ+4bkdLNz+ht+Pz3ul3Br1fasfUqEQ81zgkSvBEtz8UXswAmu6bSSkkbdtAnGolEuiOOBKSI70kNM7Ptvt0FMnCDdaLZe2lJz/8qTFWLtiaAl3xgBZC/5vJ+Y3K4w2HsecqNufYuN8LSj9MBGMWOk1MystmI87owxvo1XHfqHDCUlOpNhy1RoBWXWFVxaSISQurAG97ik7Ue2u0uYSbtF1IohYvjYyPvdD7uP+W+4xfc1r6WHpgqp7ObLw33muMtTLwW9eQE2Aim8jH30/qF4yk0R0WcyfHmWMUaMTCmn0G8wi0D5w7Kx26ILKb0bomgzX1m905T2p4h2RudOuyKRrefkn2edHH1rCMo2AguZgJIxs9KsD+EToka2C+v7GSEtqJ08HBQXKx5zMH0BU3JSrsTxrkxC6XqtmiHeDqAXSR9Od5n1ZeXAkZBtWHpPKB5h9iaGAb0ORIYDMS8k+Fbw58U+jHfL+cxWWveZh0fO2T5+Iyo9ABSrwWdpJshRlg4kE4MRfoN7Sv1m/hx2g95d20tEWcEpU0um5IAmjcPH4NRTsynsz3gC4cg5eMJoy2dOIGV5DOznsk/awykQMGhLoi2wAmuKIXFvUiVfPgonOB+fyYEHvAm23XHYURjmpLuCnP3vhRYBmLSnbGpvlANy4=
+after_success:
+  coveralls

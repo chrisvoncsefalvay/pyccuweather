@@ -11,4 +11,3 @@ class TestFroot(TestCase):
         with self.assertRaises(errors.NotImplementedOrUnknownMethod):
             froot("120dforecast")
 
-            

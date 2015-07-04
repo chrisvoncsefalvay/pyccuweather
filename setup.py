@@ -10,15 +10,15 @@ description = "Pyccuweather is a simple, efficient back-end to the Accuweather A
               "result, it supports export in various numpy/scipy/pandas formats as well."
 
 config = {
-    'description': '',
+    'description': description,
     'author': 'Chris von Csefalvay',
-    'url': 'URL to get it at.',
+    'url': 'http://github.com/chrisvoncsefalvay/pyccuweather',
     'author_email': 'chris@chrisvoncsefalvay.com',
-    'version': '0.1',
+    'version': '0.31',
     'install_requires': ['nose', 'pandas', 'requests'],
     'packages': ['pyccuweather'],
     'scripts': [],
     'name': 'pyccuweather'
 }
 
-setup(requires=['requests', 'nose'], **config, )
+setup(requires=['requests', 'nose'], **config)

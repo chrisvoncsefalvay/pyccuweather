@@ -1,0 +1,112 @@
+.TH "pyccuweather.connector.Connection" 3 "Sat Jul 4 2015" "Version 0.31" "Pyccuweather" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+pyccuweather.connector.Connection \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits object\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.ti -1c
+.RI "def \fBwipe_api_key\fP (self)"
+.br
+.ti -1c
+.RI "def \fBloc_geoposition\fP"
+.br
+.RI "\fILocation resolvers #\&. \fP"
+.ti -1c
+.RI "def \fBloc_string\fP"
+.br
+.ti -1c
+.RI "def \fBloc_postcode\fP"
+.br
+.ti -1c
+.RI "def \fBloc_ip\fP"
+.br
+.ti -1c
+.RI "def \fBloc_lkey\fP"
+.br
+.ti -1c
+.RI "def \fBget_current_wx\fP"
+.br
+.RI "\fICurrent conditions #\&. \fP"
+.ti -1c
+.RI "def \fBget_forecast\fP"
+.br
+.RI "\fIForecasts #\&. \fP"
+.ti -1c
+.RI "def \fBget_airquality\fP"
+.br
+.RI "\fIAir quality #\&. \fP"
+.ti -1c
+.RI "def \fBget_actuals\fP"
+.br
+.RI "\fIClimo #\&. \fP"
+.ti -1c
+.RI "def \fBget_records\fP"
+.br
+.ti -1c
+.RI "def \fBget_normals\fP"
+.br
+.ti -1c
+.RI "def \fBget_alerts\fP (self, lkey, forecast_range)"
+.br
+.RI "\fIAlerts #\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBAPI_KEY\fP"
+.br
+.ti -1c
+.RI "\fBAPI_ROOT\fP"
+.br
+.ti -1c
+.RI "\fBAPI_VERSION\fP"
+.br
+.ti -1c
+.RI "\fBretries\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Represents a connection to the Accuweather API.
+
+:param API_KEY: API key
+:param dev: whether the dev mode api (apidev.accuweather.com) or the production api (api.accuweather.com) is used
+:param retry: number of retries of failed operations - TODO: implement
+:raise errors.MalformattedAPIKeyError: if the API key is not a 32-character string, an error is thrown
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "def pyccuweather\&.connector\&.Connection\&.wipe_api_key ( self)"
+
+.PP
+.nf
+Wipes API key from a Connection instance
+:return: void
+
+.fi
+.PP
+ 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pyccuweather from the source code\&.

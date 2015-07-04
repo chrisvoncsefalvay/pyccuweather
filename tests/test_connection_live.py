@@ -8,8 +8,7 @@ import yaml
 
 class TestConnectionLive(TestCase):
     def setUp(self):
-        APIKEY = yaml.load(open("config.yaml"))["apikey"]
-        self.conn = Connection(API_KEY=APIKEY)
+        self.conn = Connection()
 
     def test_wipe_api_key(self):
         self.conn.wipe_api_key()

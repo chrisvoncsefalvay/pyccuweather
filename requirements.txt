@@ -1,0 +1,13 @@
+PyYAML==3.11
+cookies==2.2.1
+cov-core==1.15.0
+coverage==3.7.1
+httmock==1.2.3
+mock==1.0.1
+nose==1.3.7
+nose-cov==1.6
+nose-cover3==0.1.0
+requests==2.7.0
+responses==0.4.0
+retry-decorator==1.0.0
+six==1.9.0

@@ -14,7 +14,7 @@ import requests
 from pyccuweather import errors
 from pyccuweather.froots import froot
 from pyccuweather.objects import *
-import re
+import os
 
 
 class Connection(object):
@@ -27,17 +27,20 @@ class Connection(object):
     :raise errors.MalformattedAPIKeyError: if the API key is not a 32-character string, an error is thrown
     """
 
-    def __init__(self, API_KEY: str, dev: bool=True, retry: int=3):
+    def __init__(self, API_KEY: str=None, dev: bool=True, retry: int=3):
 
         # TODO: implement retries
 
         try:
-            assert isinstance(API_KEY, str)
-            assert len(API_KEY) is 32
-        except AssertionError:
-            raise errors.MalformattedAPIKeyError()
+            self.API_KEY = os.environ["ACCUWEATHER_APIKEY"]
+        except KeyError:
+            try:
+                assert isinstance(API_KEY, str)
+                assert len(API_KEY) is 32
+                self.API_KEY = API_KEY
+            except AssertionError:
+                raise errors.MalformattedAPIKeyError()
 
-        self.API_KEY = API_KEY
         self.API_ROOT = "http://apidev.accuweather.com" if dev is True else "http://api.accuweather.com"
         self.API_VERSION = "v1"
         self.retries = retry

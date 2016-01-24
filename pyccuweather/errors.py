@@ -9,6 +9,13 @@ The Python Accuweather API
 http://www.github.com/chrisvoncsefalvay/pyccuweather/
 """
 
+class BadLanguageInput(BaseException):
+    """
+    Raised when the Language input is not correctly formed
+    """
+    def __str__(self):
+        return "Language selection must a 2 digit language code compliant with ISO 639-1"
+
 
 class MalformattedAPIKeyError(BaseException):
     """

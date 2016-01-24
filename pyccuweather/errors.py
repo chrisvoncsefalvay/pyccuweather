@@ -17,6 +17,13 @@ class BadLanguageInput(BaseException):
         return "Language selection must a 2 digit language code compliant with ISO 639-1"
 
 
+class NoAPIKeyProvided (BaseException):
+    """
+    Raised when the API key is not provided or not set with the environment variable
+    """
+    def __str__(self):
+        return "No API key provided or set with the environment variable ACCUWEATHER_APIKEY"
+
 class MalformattedAPIKeyError(BaseException):
     """
     Raised when the API key looks malformatted (wrong type or length). Does not actually check the API key for validity!"

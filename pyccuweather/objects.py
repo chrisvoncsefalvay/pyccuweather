@@ -122,8 +122,7 @@ class TimeZone(object):
         self.name = name
         self.gmt_offset = gmt_offset
         self.is_daylight_saving = is_daylight_saving
-        self.next_offset_change = strptime(next_offset_change, "%Y-%m-%dT%H:%M:%SZ")
-
+        self.next_offset_change = strptime(next_offset_change, "%Y-%m-%dT%H:%M:%SZ") if next_offset_change else None
 
 class Location(object):
     """

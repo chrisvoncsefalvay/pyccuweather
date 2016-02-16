@@ -27,7 +27,7 @@ class Connection(object):
     :raise errors.MalformattedAPIKeyError: if the API key is not a 32-character string, an error is thrown
     """
 
-    def __init__(self, API_KEY: str=None, dev: bool=True, retry: int=3):
+    def __init__(self, API_KEY: str=None, dev: bool=True, retry: int=3, timeout=None):
 
         # TODO: implement retries
 
@@ -49,6 +49,7 @@ class Connection(object):
         self.API_ROOT = "http://apidev.accuweather.com" if dev is True else "http://api.accuweather.com"
         self.API_VERSION = "v1"
         self.retries = retry
+        self.timeout = timeout
 
     def __str__(self):
         return u"Accuweather connector to {0:s}".format(self.API_ROOT)
@@ -121,7 +122,7 @@ class Connection(object):
                        "apikey": self.API_KEY}
 
         resp = requests.get(url=url,
-                            params=payload).json()
+                            params=payload, timeout=self.timeout).json()
 
         _result = list()
         if len(resp) > 0:
@@ -163,7 +164,7 @@ class Connection(object):
                    "apikey": self.API_KEY}
 
         resp = requests.get(url=url,
-                            params=payload).json()
+                            params=payload, timeout=self.timeout).json()
 
         assert len(resp) > 0
 
@@ -185,7 +186,7 @@ class Connection(object):
                    "apikey": self.API_KEY}
 
         resp = requests.get(url=url,
-                            params=payload).json()
+                            params=payload, timeout=self.timeout).json()
 
         assert len(resp) > 0
 
@@ -208,7 +209,7 @@ class Connection(object):
         payload = {"apikey": self.API_KEY}
 
         resp = requests.get(url=url,
-                            params=payload).json()
+                            params=payload, timeout=self.timeout).json()
 
         assert len(resp) > 0
 
@@ -243,7 +244,7 @@ class Connection(object):
                    "details": "true" if details is True else "false"}
 
         resp = requests.get(url=url,
-                            params=payload)
+                            params=payload, timeout=self.timeout)
 
         return CurrentObs(resp.json())
 
@@ -264,7 +265,7 @@ class Connection(object):
                    "metric": "true" if metric == True else "false"}
 
         resp = requests.get(url=url,
-                            params=payload)
+                            params=payload, timeout=self.timeout)
 
         if forecast_type[-1] is "h":
             return HourlyForecasts(resp.json())
@@ -287,7 +288,7 @@ class Connection(object):
         payload = {"apikey": self.API_KEY}
 
         return requests.get(url=url,
-                            params=payload)
+                            params=payload, timeout=self.timeout)
 
     ########################################################
     # Climo                                                #
@@ -312,7 +313,7 @@ class Connection(object):
             payload = {"apikey": self.API_KEY}
 
         return requests.get(url=url,
-                            params=payload)
+                            params=payload, timeout=self.timeout)
 
     def get_records(self, lkey, start_date, end_date=None):
 
@@ -333,7 +334,7 @@ class Connection(object):
             payload = {"apikey": self.API_KEY}
 
         return requests.get(url=url,
-                            params=payload)
+                            params=payload, timeout=self.timeout)
 
     def get_normals(self, lkey, start_date, end_date=None):
 
@@ -354,7 +355,7 @@ class Connection(object):
             payload = {"apikey": self.API_KEY}
 
         return requests.get(url=url,
-                            params=payload)
+                            params=payload, timeout=self.timeout)
 
     ########################################################
     # Alerts                                               #
@@ -371,4 +372,4 @@ class Connection(object):
         payload = {"apikey": self.API_KEY}
 
         return requests.get(url=url,
-                            params=payload)
+                            params=payload, timeout=self.timeout)

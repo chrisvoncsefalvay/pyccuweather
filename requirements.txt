@@ -7,7 +7,7 @@ mock==1.0.1
 nose==1.3.7
 nose-cov==1.6
 nose-cover3==0.1.0
-requests==2.7.0
+requests==2.20.0
 responses==0.4.0
 retry-decorator==1.0.0
 six==1.9.0
